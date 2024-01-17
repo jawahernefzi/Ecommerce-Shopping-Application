@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Shop.ViewModels"
+             x:Class="Shop.Views.CategoriesProduct"
+             x:Name="ThisPage"
+             Title="Categories"
+             >
+    <ContentPage.BindingContext>
+        <vm:AdminCategoriesPageViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <!-- Your UI to display the list of categories -->
+        <CollectionView ItemsSource="{Binding Categories}" >
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <!-- Customize the appearance of each category item -->
+                    <Frame CornerRadius="5" Margin="5,5,5,0" BorderColor="LightGray" BackgroundColor="White">
+                        <StackLayout Orientation="Horizontal">
+                            <!-- Add an Image for the category icon -->
+                            <Image Source="{Binding GetIconPathForCategory(Nom), Source={x:Reference ThisPage}}" HeightRequest="40" WidthRequest="40" Margin="10"/>
+
+                            <StackLayout>
+                                <Label Text="{Binding Nom}" Margin="15" TextColor="Black"/>
+                                <!-- Add other details as needed -->
+                            </StackLayout>
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BindingContext.ShowProductsCommand, Source={x:Reference ThisPage}}" CommandParameter="{Binding}" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ContentPage.Content>
+</ContentPage>

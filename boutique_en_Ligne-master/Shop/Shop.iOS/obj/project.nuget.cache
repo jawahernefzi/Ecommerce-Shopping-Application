@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "S+e8zAZe/C0VH0wiaEZZeq8KvHY2JIREvEW4oiUpDS6Suwdqp9SXPqHH0WGA9OmRGB1/bvwppFKTwDiBs1U1oQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\xps\\source\\repos\\Shop\\Shop\\Shop.iOS\\Shop.iOS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\xps\\.nuget\\packages\\acr.userdialogs\\7.0.32\\acr.userdialogs.7.0.32.nupkg.sha512",
+    "C:\\Users\\xps\\.nuget\\packages\\btprogresshud\\1.2.0.6\\btprogresshud.1.2.0.6.nupkg.sha512",
+    "C:\\Users\\xps\\.nuget\\packages\\newtonsoft.json\\9.0.1\\newtonsoft.json.9.0.1.nupkg.sha512",
+    "C:\\Users\\xps\\.nuget\\packages\\sqlite\\3.13.0\\sqlite.3.13.0.nupkg.sha512",
+    "C:\\Users\\xps\\.nuget\\packages\\sqlite-net-pcl\\1.4.118\\sqlite-net-pcl.1.4.118.nupkg.sha512",
+    "C:\\Users\\xps\\.nuget\\packages\\sqlitenetextensions\\2.1.0\\sqlitenetextensions.2.1.0.nupkg.sha512",
+    "C:\\Users\\xps\\.nuget\\packages\\sqlitepclraw.bundle_green\\1.1.5\\sqlitepclraw.bundle_green.1.1.5.nupkg.sha512",
+    "C:\\Users\\xps\\.nuget\\packages\\sqlitepclraw.core\\1.1.5\\sqlitepclraw.core.1.1.5.nupkg.sha512",
+    "C:\\Users\\xps\\.nuget\\packages\\sqlitepclraw.provider.sqlite3.ios_unified\\1.1.5\\sqlitepclraw.provider.sqlite3.ios_unified.1.1.5.nupkg.sha512",
+    "C:\\Users\\xps\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.6.1\\xamarin.essentials.1.6.1.nupkg.sha512",
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\5.0.0.2012\\xamarin.forms.5.0.0.2012.nupkg.sha512"
+  ],
+  "logs": []
+}

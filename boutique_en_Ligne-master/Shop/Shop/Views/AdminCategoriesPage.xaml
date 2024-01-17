@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Shop.Views.AdminCategoriesPage"
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:Shop.ViewModels"
+             xmlns:model="clr-namespace:Shop.Models"
+             x:DataType="local:AdminCategoriesPageViewModel">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddCategoryCommand}" />
+    </ContentPage.ToolbarItems>
+    <RefreshView x:DataType="local:AdminCategoriesPageViewModel" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <CollectionView x:Name="CategoriesListView"
+                ItemsSource="{Binding Categories}"
+                SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10" x:DataType="model:Categorie" Orientation="Horizontal">
+                        <StackLayout>
+                            <Label Text="{Binding Id}" 
+                   LineBreakMode="NoWrap" 
+                   FontSize="16" />
+                            <Label Text="{Binding Nom}" 
+                   LineBreakMode="NoWrap" 
+                   FontSize="16" />
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="EndAndExpand">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer 
+                    NumberOfTapsRequired="1"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:AdminCategoriesPageViewModel}}, Path=CategoryTapped}"		
+                    CommandParameter="{Binding .}" />
+                            </StackLayout.GestureRecognizers>
+
+                            <Image Source="edit.png" 
+                   WidthRequest="20" 
+                   HeightRequest="30"
+                   VerticalOptions="CenterAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                        NumberOfTapsRequired="1"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:AdminCategoriesPageViewModel}}, Path=EditCategoryCommand}" 
+                        CommandParameter="{Binding .}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+
+                            <Image Source="delete.jpeg" 
+                   WidthRequest="30" 
+                   HeightRequest="30"
+                   VerticalOptions="CenterAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                        NumberOfTapsRequired="1"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:AdminCategoriesPageViewModel}}, Path=DeleteCategoryCommand}" 
+                        CommandParameter="{Binding .}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+                    </StackLayout>
+                </DataTemplate>
+
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>

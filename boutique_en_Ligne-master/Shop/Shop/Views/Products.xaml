@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:Shop.Converters"
+                x:Class="Shop.Views.Products"
+             xmlns:viewmodels="clr-namespace:Shop.ViewModels"
+             Title="{Binding SelectedCategory.Nom}">
+    
+    <ContentPage.BindingContext>
+        <viewmodels:UserProductsPage/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSourceConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout>
+        <!-- For Products -->
+        <CollectionView x:Name="productsCollectionView"
+                        ItemsSource="{Binding Products}"
+                        SelectionMode="Single"
+                        Margin="10,15,10,10"
+                      SelectionChanged="OnProductSelected"
+>
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="2" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout >
+                        <!-- Add your UI elements here based on the properties of the 'Produit' model -->
+                        <Image Source="{Binding UrlImage, Converter={StaticResource ByteArrayToImageSourceConverter}}" WidthRequest="120" HeightRequest="120" />
+                        <Label Text="{Binding Nom}" />
+
+                        <Label Text="{Binding Prix, StringFormat=' {0:C}'}" FontSize="14" />
+                        <Button Text="Add to cart "                         Margin="40,15,10,10"
+ Command="{Binding BindingContext.AjouterAuPanierCommand, Source={x:Reference Name=productsCollectionView}}" CommandParameter="{Binding .}" />
+
+                        <!-- Add other details as needed -->
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

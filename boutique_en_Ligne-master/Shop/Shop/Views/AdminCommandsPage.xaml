@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:Shop.ViewModels"
+             x:Class="Shop.Views.AdminCommandsPage"
+             Title="Commands">
+
+    <ContentPage.BindingContext>
+        <viewmodels:AdminCommandsViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <!-- Updated ListView ItemTemplate with a Button -->
+            <ListView x:Name="commandsListView" ItemsSource="{Binding Commands}">
+                <ListView.BindingContext>
+                    <viewmodels:AdminCommandsViewModel />
+                </ListView.BindingContext>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="10">
+                                <!-- Display command details -->
+                                <Label Text="{Binding Id}" VerticalOptions="Center"/>
+
+                                <Label Text="{Binding NomClient}" VerticalOptions="Center"/>
+                                <StackLayout HorizontalOptions="EndAndExpand">
+                                    <Label Text="Show Details" TextColor="Black">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding BindingContext.ShowCommandDetails, Source={x:Reference commandsListView}}" CommandParameter="{Binding .}" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

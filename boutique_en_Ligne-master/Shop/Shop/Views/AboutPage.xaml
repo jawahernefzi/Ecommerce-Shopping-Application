@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Shop.Views.AboutPage"
+             xmlns:vm="clr-namespace:Shop.ViewModels"
+             Title="Home">
+
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- Changement de la couleur de fond -->
+            <Color x:Key="PrimaryBackground">#F4F4F4</Color>
+            <!-- Changement de la couleur de l'accent -->
+            <Color x:Key="Accent">#3498DB</Color>
+            <!-- Changement de la police -->
+            <OnPlatform x:Key="DefaultFontFamily" x:TypeArguments="x:String">
+                <On Platform="Android" Value="sans-serif-light" />
+                <On Platform="iOS" Value="HelveticaNeue-Light" />
+                <On Platform="UWP" Value="Segoe UI Light" />
+            </OnPlatform>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid BackgroundColor="{StaticResource PrimaryBackground}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView Padding="0,30,0,30" VerticalOptions="FillAndExpand">
+                    <!-- Ajout de l'image de logo avec un aspect plus joli -->
+                    <Image Source="ShopLogo.png" VerticalOptions="Center" HeightRequest="120" Aspect="AspectFit" />
+                </ContentView>
+            </StackLayout>
+        </StackLayout>
+        <ScrollView Grid.Row="1">
+            <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
+                <!-- Modification du texte pour le message de bienvenue -->
+                <Label Text="Welcome to Our Shop" FontSize="Title" FontFamily="{StaticResource DefaultFontFamily}" TextColor="Black" HorizontalOptions="Center"/>
+                <Label Text="Explore our products and find amazing deals." FontSize="16" FontFamily="{StaticResource DefaultFontFamily}" TextColor="Black" Padding="0,0,0,0" HorizontalOptions="Center"/>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:Shop.ViewModels" xmlns:converters="clr-namespace:Shop.Converters"
+             x:Class="Shop.Views.ProductDetailsPage"
+             Title="Product Details">
+
+    <ContentPage.BindingContext>
+        <viewmodels:ProductDetailsViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSourceConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <!-- Layout for displaying product details -->
+        <StackLayout Padding="10">
+            <Image Source="{Binding Product.UrlImage, Converter={StaticResource ByteArrayToImageSourceConverter}}" WidthRequest="120" HeightRequest="120" />
+
+            <Label Text="{Binding Product.Nom}" FontSize="20" FontAttributes="Bold"/>
+            <Label Text="{Binding Product.Description}" FontSize="16"/>
+            <Label Text="{Binding Product.Prix, StringFormat='Price: {0:C}'}" FontSize="16"/>
+
+            <!-- You can add more labels for additional details if needed -->
+
+            <!-- Button to add the product to the shopping cart -->
+            <Button Text="Add to Cart" Command="{Binding AddToCartCommand}"  Margin="200,15,10,10"
+ />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

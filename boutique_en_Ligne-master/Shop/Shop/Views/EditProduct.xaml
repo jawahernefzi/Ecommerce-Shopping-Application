@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:Shop.Views"
+             mc:Ignorable="d"
+             x:Class="Shop.Views.EditProduct">
+
+    <ContentPage.Content>
+        <Grid Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Entry x:Name="productNameEntry" Grid.Row="0" Placeholder="Product Name" Text="{Binding Product.Nom}" />
+            <Entry x:Name="productDescriptionEntry" Grid.Row="1" Placeholder="Product Description" Text="{Binding Product.Description}" />
+            <Entry x:Name="productPriceEntry" Grid.Row="2" Placeholder="Product Price" Keyboard="Numeric" Text="{Binding Product.Prix, StringFormat='{0:F2}'}" />
+
+            <!-- Picker for selecting a category -->
+            <Picker x:Name="categoryPicker" Grid.Row="3" Title="Select Category"
+                    ItemsSource="{Binding Categories}"
+                    ItemDisplayBinding="{Binding Nom}"
+                    SelectedItem="{Binding SelectedCategory}">
+            </Picker>
+            <Button x:Name="selectImageButton" Grid.Row="5" Text="Select Image" Clicked="OnSelectImageClicked" />
+
+            <!-- Image control for selected product image -->
+
+            <!-- Button to select image -->
+            <Image x:Name="productImage" Grid.Row="4" Source="{Binding Product.UrlImage}" />
+
+            <!-- Button to update product -->
+            <Button x:Name="saveButton" Grid.Row="6" Text="Save" Command="{Binding UpdateCommand}" HorizontalOptions="End" WidthRequest="100" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

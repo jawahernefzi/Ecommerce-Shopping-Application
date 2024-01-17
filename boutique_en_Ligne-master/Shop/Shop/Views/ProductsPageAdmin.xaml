@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Shop.ViewModels"
+             x:Class="Shop.Views.ProductsPageAdmin"
+             Title="Products">
+
+    <ContentPage.BindingContext>
+        <vm:AdminProductsPageViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddProductCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <CollectionView ItemsSource="{Binding Products}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10" Orientation="Horizontal">
+                            <StackLayout>
+                                <Label Text="{Binding Id}" 
+                                       LineBreakMode="NoWrap" 
+                                       FontSize="16" />
+                                <Label Text="{Binding Nom}" 
+                                       LineBreakMode="NoWrap" 
+                                       FontSize="16" />
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="EndAndExpand">
+                                <Image Source="edit.png" 
+                                       WidthRequest="20" 
+                                       HeightRequest="30"
+                                       VerticalOptions="CenterAndExpand">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            NumberOfTapsRequired="1"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AdminProductsPageViewModel}}, Path=EditProductCommand}" 
+                                            CommandParameter="{Binding .}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+
+                                <Image Source="delete.jpeg" 
+                                       WidthRequest="30" 
+                                       HeightRequest="30"
+                                       VerticalOptions="CenterAndExpand">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            NumberOfTapsRequired="1"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AdminProductsPageViewModel}}, Path=DeleteProductCommand}" 
+                                            CommandParameter="{Binding .}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

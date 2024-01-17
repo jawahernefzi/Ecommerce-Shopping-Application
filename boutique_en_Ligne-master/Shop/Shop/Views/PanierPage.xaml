@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:Shop.ViewModels"
+             x:Class="Shop.Views.PanierPage"
+             Title="cart">
+
+    <ContentPage.BindingContext>
+        <viewmodels:PanierViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <!-- Liste des articles dans le panier -->
+            <ListView x:Name="panierListView" ItemsSource="{Binding Articles}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="1">
+                                <Label Text="{Binding NomProduit}" VerticalOptions="Center"/>
+                                <Label Text="{Binding PrixUnitaire, StringFormat=' {0:C}'}" VerticalOptions="Center"/>
+                                <Image Source="moins.png" WidthRequest="30" HeightRequest="30"  HorizontalOptions="EndAndExpand">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Path=BindingContext.DecrementQuantityCommand, Source={x:Reference panierListView}}" CommandParameter="{Binding IdProduit}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Label Text="{Binding Quantite}" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+
+                                <!-- Styling for buttons -->
+                                <Image Source="plus.png" WidthRequest="30" HeightRequest="30" >
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Path=BindingContext.IncrementQuantityCommand, Source={x:Reference panierListView}}" CommandParameter="{Binding IdProduit}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+
+                                
+
+                                <Image Source="delete.png" WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Path=BindingContext.RetirerArticleCommand, Source={x:Reference panierListView}}" CommandParameter="{Binding IdProduit}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!-- Total du panier -->
+            <Label Text="{Binding Total, StringFormat='Total: {0:C}'}" VerticalOptions="Center" FontSize="18" FontAttributes="Bold" Margin="0,10" TextColor="Black"/>
+
+            <!-- Boutons d'action -->
+            <StackLayout Orientation="Horizontal" Spacing="10" Margin="0,20">
+                <Button Text="Vider le panier" Command="{Binding ViderPanierCommand}" BackgroundColor="Gray" TextColor="White"/>
+                <Button Text="Passer la commande" Command="{Binding PasserCommandeCommand}" BackgroundColor="Black" TextColor="White"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

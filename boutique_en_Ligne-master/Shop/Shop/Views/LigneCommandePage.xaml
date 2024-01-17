@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:Shop.ViewModels"
+             x:Class="Shop.Views.LigneCommandePage"
+             Title="Command Details">
+
+    <ContentPage.BindingContext>
+        <viewmodels:LigneCommandeViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="10">
+                <Label Text="IdProduit" VerticalOptions="Center"/>
+                <Label Text="Quantité" VerticalOptions="Center"/>
+                <!-- Add more labels for additional details if needed -->
+            </StackLayout>
+            <!-- Display LigneCommande details -->
+            <ListView ItemsSource="{Binding LignesCommande}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="10">
+                                <!-- Display LigneCommande details (customize as needed) -->
+                                
+                                <Label Text="{Binding IdProduit}" VerticalOptions="Center"/>
+                                <Label Text="{Binding Quantite}" VerticalOptions="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Shop",
+    "\\Shop\\Shop",
+    "\\Shop\\Shop.Android",
+    "\\Shop\\Shop\\Converters",
+    "\\Shop\\Shop\\Models",
+    "\\Shop\\Shop\\ViewModels",
+    "\\Shop\\Shop\\Views"
+  ],
+  "SelectedNode": "\\Shop\\Shop\\ViewModels\\LoginViewModel.cs",
+  "PreviewInSolutionExplorer": false
+}
